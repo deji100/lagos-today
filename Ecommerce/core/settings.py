@@ -26,9 +26,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'ov91*_gwlqla!dxhg@7ltfc9ql3bu0)oh!xop9slwt%gsx^6!*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://lagos-today.herokuapp.com/']
 
 INTERNAL_IPS = [
     '127.0.0.1',

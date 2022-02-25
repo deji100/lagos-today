@@ -1,0 +1,161 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block store %}
+<!-- Container for the image gallery -->
+<br>
+<br>
+<br>
+{% for message in messages %}
+        <div class="container-fluid p-0">
+          <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert" >
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        </div>
+{% endfor %}
+<div class="product-flex">
+  
+  <div class="container bg-light p-4">
+    <div class="row">
+      <div class="col-md-6 border-right align-self-center prod-img">
+          <div class="mySlides">
+            <div class="numbertext">1 / 4</div>
+              <img src="{{ product.imageUrl }}" style="width:100%; border-radius: 10px;">
+          </div>
+
+          <div class="mySlides">
+            <div class="numbertext">2 / 4</div>
+              <img src="{{ product.imageUrl2 }}" style="width:100%">
+          </div>
+
+          <div class="mySlides">
+            <div class="numbertext">3 / 4</div>
+              <img src="{{ product.imageUrl3 }}" style="width:100%">
+          </div>
+
+          <div class="mySlides">
+            <div class="numbertext">4 / 4</div>
+              <img src="{{ product.imageUrl4 }}" style="width:100%">
+          </div>
+
+          <!-- Next and previous buttons -->
+          {% if product.imageUrl2 %}
+          <a class="pre" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="nex" onclick="plusSlides(1)">&#10095;</a>
+          {% endif %}
+
+    
+          <!-- Thumbnail images -->
+          <div class="row" style="display: flex; flex-direction: row;">
+              {% if product.imageUrl2 %}
+              <div class="column">
+                <img class="demo cursor" src="{{ product.imageUrl }}" style="width:10%" onclick="currentSlide(1)" alt=" ">
+              </div>
+              {% endif %}
+              {% if product.imageUrl2 %}
+              <div class="column">
+                <img class="demo cursor" src="{{ product.imageUrl2 }}" style="width:10%" onclick="currentSlide(2)" alt=" ">
+              </div>
+              {% endif %}
+              {% if product.imageUrl3 %}
+              <div class="column">
+                <img class="demo cursor" src="{{ product.imageUrl3 }}" style="width:10%" onclick="currentSlide(3)" alt=" ">
+              </div>
+              {% endif %}
+              {% if product.imageUrl4 %}
+              <div class="column">
+                <img class="demo cursor" src="{{ product.imageUrl4 }}" style="width:10%" onclick="currentSlide(4)" alt=" ">
+              </div>
+              {% endif %}
+          </div>
+      </div>
+      <div class="col-md-6 border-right">
+        <br>
+            <div class="mt-2">Title:  {{ product.title }}</div>
+            <div class="mt-2">Category:  {{ product.category }}</div>
+            <div class="mt-2">Color:  {{ product.color }}</div>
+            <div class="mt-2">Size:  {{ product.size }}</div>
+            
+            <div class="mt-2">Description: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas voluptates, labore soluta neque cupiditate perferendis debitis ex exercitationem molestias iure alias, natus, obcaecati itaque ullam praesentium deleniti magni. Ipsum, non?</div>
+            
+            <!-- <div>Description:  {{ product.description }}</div> -->
+            <div class="mt-2">Price:  ₦{{ product.price }}</div>
+            <br>
+            <button type="button" class="btn btn-primary save"><a class="cart_button" href="{% url 'add_product' product.id %}">Save</a></button>
+            <button type="button" data-product="{{ product.id }}" data-action="add" class="btn btn-success add update-cart"><a class="cart_button update-cart" href="#">Add to cart</a></button>
+      </div>
+    </div>  
+  </div>
+</div>
+<div class="product-flex mt-2">
+  <div class="container bg-white p-3">
+    <div class="row">
+      <div class="col-md-12">
+        <form action="{% url 'comment' product.id %}" method="POST">
+          {% csrf_token %}
+          <textarea class="form-control"; name="comment" placeholder="Comment"></textarea>
+          <input class="btn btn-primary mt-2" type="submit" value="Submit">
+        </form>
+      </div>
+    </div>  
+  </div>
+</div>
+
+<div class="product-flex mt-2">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12"> 
+      {% if comments %}
+        {% for comment in comments %}
+        <div class="comment-section mt-4 p-4"> 
+              <div class="pro-drop">
+                <img src="{{ comment.customer.imageUrl }}" alt="">
+              </div>
+              <div style="display: inline-block; font-size: 1.2rem; font-weight: bold;">{{ comment.customer.account.username }}</div><br>
+              <div>{{ comment.comment }}</div>
+              <div style="float: right; display: inline;">{{ comment.time.time }}</div>
+        </div>
+        {% endfor %}
+      {% else %}
+        <div class="search-result">No Comment</div>      
+      {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+      var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+  </script>
+
+{% endblock %}

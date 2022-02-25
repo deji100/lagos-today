@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block store %}
+<br>
+<br>
+<br>
+<div class="d-flex justify-content-center profile">
+    <div class="table-responsive">
+        <table>
+            <tr>
+                <th>S/N</th>
+                <th>Product Title</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Reference No</th>
+                <th>Date Ordered</th>
+                <th>Delivered</th>
+            </tr>
+            {% for product in orderPro %}
+            <tr>
+                <td style="text-align: center;">{{ forloop.counter }}</td>
+                <td>{{ product.product.title }}</td>
+                <td style="text-align: center;">{{ product.quantity }}</td>
+                <td>₦{{ product.get_item_total }}</td>
+                <td>{{ product.transaction_id }}</td>
+                <td>{{ product.order_date }}</td>
+                {% if product.delivered %}
+                <td class="fa fa-check" style="color: rgb(99, 194, 99);margin: 25px;border: none;text-align: center;"></td>
+                {% else %}
+                <td>Pending</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+<br>
+<br>
+{% endblock %}

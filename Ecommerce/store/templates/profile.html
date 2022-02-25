@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+
+{% block store %}
+<br>
+<br>
+<br>
+{% for message in messages %}
+    <div class="container-fluid p-0">
+        <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert" >
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+{% endfor %}
+
+<div class="profile">
+
+    <div class="container rounded bg-white">
+        <div class="row">
+            {% if customer.imageUrl %}
+            <div style="margin: auto;" class="col-md-4 border-right">
+                <div style="width: 12rem; margin: auto;" class="d-flex flex-column align-items-center text-center p-3 py-5"><img style="width:100%;" class="rounded-circle mt-5" src="{{ customer.imageUrl }}"><span class="font-weight-bold">{{ customer.account }}</span><span class="text-black-50">{{ customer.account.email }}</span><span> </span></div>
+            </div>
+            {% endif %}
+            
+            <div style="margin: auto;" class="col-md-8 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Profile Update <span style="color: lightgreen;">{{ success }}</span></h4>
+                    </div>
+                    <form action="{% url 'edit_profile' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row mt-3">
+                            <div class="col-md-4"><label class="labels">Profile Image</label><input type="file" name="image" class="form-control"></div>
+                            
+                            <div class="col-md-4"><label class="labels">First Name</label><input type="text" class="form-control" placeholder="first name" name="first_name" value="{{ customer.account.first_name }}"></div>
+
+                            <div class="col-md-4"><label class="labels">Last Name</label><input type="text" class="form-control" name="last_name" value="{{ customer.account.last_name }}" placeholder="last name"></div>
+
+                        </div>
+                        <div class="row mt-3">
+
+                            <div class="col-md-12"><label class="labels">Email Address</label><input type="text" class="form-control" placeholder="enter email address" name="email" value="{{ customer.account.email }}"></div>
+
+                            <div class="col-md-12"><label class="labels">PhoneNumber</label><input type="text" class="form-control" placeholder="enter phone number" name="contact" value="{{ customer.contact }}"></div>
+                            
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12"><label class="labels">Address</label><input type="text" class="form-control" placeholder="enter address" name="address" value="{{ customer.address }}"></div>
+
+                            <div class="col-md-6"><label class="labels">City</label><input type="text" class="form-control" placeholder="city" name="city" value="{{ customer.city }}"></div>
+
+                            <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" name="state" value="{{ customer.state }}" placeholder="state"></div>
+                        </div>
+                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Update Profile</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <br>
+</div>
+
+{% endblock %}

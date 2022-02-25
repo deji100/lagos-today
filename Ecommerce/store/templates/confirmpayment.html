@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block store %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <div class="contaner">
+        <div class="row">
+            <div class="search_result">
+                <div class="col-12">
+                    <h3>Make Payment for: ₦{{ cart.get_cart_total }}</h3>
+                    <script src="https://js.paystack.co/v1/inline.js"></script> 
+                    <button onclick="paywithPaystack()" class="btn btn-success" id="django-paystack-button">Confirm Payment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    function paywithPaystack() {
+        let currency = 'NGN';
+        let plan = '';
+        let ref = "{{ payment.ref }}";
+        let obj = {
+            key : "{{ paystack_public_key }}",
+            email : "{{ customer.account.email }}",
+            amount : "{{ payment.amount_value }}",
+            ref : ref, 
+            callback : function(response){
+                window.location.href = "{% url 'verify' payment.ref %}"
+            }
+        }
+        if (Boolean(currency)) {
+            obj.currency = currency.toUpperCase();
+        }
+
+        if (Boolean(plan)) {
+            obj.plan = plan;
+        }
+
+        var handler = PaystackPop.setup(obj);
+        handler.openIframe();
+    }
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock store %}

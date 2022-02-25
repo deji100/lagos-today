@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+
+{% block store %}
+<br>
+<br>
+<br>
+<br>
+<div class="form-container">
+    <form action="{% url 'register' %}" method="POST">
+        {% csrf_token %}
+
+        <div class="mb-3">
+
+            {{ form.as_p }}
+            
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        
+        <span style="margin-left:3rem;">Have an account? <a style="text-decoration: none;" href="{% url 'login' %}">Login</a></span>
+    </form>
+</div>
+
+{% endblock %}
+

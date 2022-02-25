@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block store %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="search_result">
+    {% if searched %}
+    <h4>You searched for {{ searched }}</h4>
+    {% endif %}
+
+    <h4>{{ no_search_message }}</h4>
+
+    <h4>{{ exist }}</h4>
+    <div class="result">
+        {% if product_title %}
+        <ul>
+            {% for product in product_title %}
+            <li><a style="text-decoration:none;" href="{% url 'product' product.id %}">{{ product }}</a></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        
+        {% if product_category %}
+        <ul>
+            {% for cat in product_category %}
+            <li><a style="text-decoration:none;" href="{% url 'products' cat.id %}">{{ cat }}</a></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% endblock %}

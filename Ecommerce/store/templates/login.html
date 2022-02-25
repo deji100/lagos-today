@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+{% load socialaccount %}
+{% providers_media_js %}
+{% load static %}
+
+
+{% block store %}
+
+<br>
+<br>
+<br>
+<br>
+<div class="form-cont">
+    <br>
+    <div class="container rounded">
+        <div class="row">
+            <div class="col-md-6 login-form">
+                <form action="{% url 'login' %}" method="POST">
+                    {% csrf_token %}
+        
+                    <div class="mb-3">
+                        
+                        {{ form.as_p }}
+        
+                    </div>
+        
+                    <br>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a href="{% url 'reset_password' %}" class="forgot-password"><span>forgot password?</span></a>
+                    <br>
+                    <br>
+                    <div>Don't have an account? <a style="text-decoration: none;" href="{% url 'register' %}">Register</a></div>
+                </form>
+            </div>
+
+            <div class="col-md-6 mt-1 social-login">
+                    <a href="{% provider_login_url "google" %}"><button class="btn btn-danger mt-3 fa fa-google fa-1x p-3 google" style="width: 15rem;"> Log in with Google</button></a>
+                    <br>
+                    <a href="{% provider_login_url "facebook" method="oauth2" %}"><button class="btn btn-primary mt-0 fa fa-facebook-official fa-1x p-3 facebook" style="width: 15rem;"> Log in with Facebook</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+

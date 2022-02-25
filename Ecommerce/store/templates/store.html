@@ -1,0 +1,150 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+
+{% block store %}
+
+<div class="container-fluid contain">
+  <div class="row">
+    <div class="col-lg-12">
+      <div id="carouselExampleCaptions" class="carousel slide slide-container" data-bs-ride="carousel">
+        <div class="carousel-indicators" style="margin-bottom: 9rem; relative: absolute; z-index: 1">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active mb-5" aria-current="true" aria-label="Slide 1"></button>
+          <button class="mb-5" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button class="mb-5" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button class="mb-5" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        </div>
+        <div class="carousel-inner size1">
+          <div class="carousel-item active size2">
+            <img src="{% static 'images/swn2.jpg' %}" class="img-fluid d-block w-100 slide-img" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <div class="protect-content">
+                <div class="content"><span class="today">Lagos Today</span></div>
+              </div>
+              <h3 style="color: white; margin-top: 1rem;">SweatShirts</h3>
+            </div>
+          </div>
+          <div class="carousel-item size2">
+            <img src="{% static 'images/shirtn12.jpg' %}" class="img-fluid d-block w-100 slide-img" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <div class="protect-content">
+                <div class="content"><span class="today">Lagos Today</span></div>
+              </div>
+              <h3 style="color: white; margin-top: 1rem;">Shirts</h3>
+            </div>
+          </div>
+          <div class="carousel-item size2">
+            <img src="{% static 'images/hodn3.jpeg' %}" class="img-fluid d-block w-100 slide-img" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <div class="protect-content">
+                <div class="content"><span class="today">Lagos Today</span></div>
+              </div>
+              <h3 style="color: white; margin-top: 1rem;">Hoddies</h3>
+            </div>
+          </div>
+          <div class="carousel-item size2">
+            <img src="{% static 'images/cap2.jpg' %}" class="img-fluid d-block w-100 slide-img" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <div class="protect-content">
+                <div class="content"><span class="today">Lagos Today</span></div>
+              </div>
+              <h3 style="color: white; margin-top: 1rem;">Caps</h3>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="pro-nav">
+    <span>Categories: </span>
+    <span class="cat"><a href="{% url 'store' %}">All</a></span>
+    {% for cat in category %}
+      {% if cat.id %}
+      <span class="cat"><a href="{% url 'products' cat.id %}">{{ cat }}</a></span>
+      {% endif %}
+   {% endfor %}
+  </div>
+  
+  <div class="containee">
+    {% for message in messages %}
+          <div class="container-fluid p-0">
+            <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert" >
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          </div>
+    {% endfor %}
+      <div class="row">
+        {% for product in products %}
+        <div class="col">
+          <div class="card">  
+            <a href="{% url 'product' product.id %}"><img src="{{ product.imageUrl }}" class="card-img-top" alt="..."></a>
+            <div class="card-body carddy">
+              <h5>{{ product }}</h5>
+                <button type="button" data-product="{{ product.id }}" data-action="add" class="btn btn-success update-cart">Add to cart</button>
+                <span style="float: right;"><h5>₦{{ product.price }}</h5></span>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+  </div>
+  
+  <div class="paginate">
+      <div aria-label="Page navigation example">
+        {% if products.has_other_pages %}
+          <ul class="pagination pag">
+            {% if products.has_previous %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{ products.previous_page_number }}" aria-label="Previous">
+                  <span class="pag" aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              {% else %}
+              <li class="page-item">
+                <a class="page-link disabled" href="#" aria-label="Previous">
+                  <span class="pag" aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+            {% endif %}
+      
+            {% for i in products.paginator.page_range %}
+      
+              {% if products.number == i %}
+                <li class="page-item pag"><a class="page-link pag" href="#">{{ i }}</a></li>
+              {% else %}
+                <li class="page-item pag"><a class="page-link pag" href="?page={{ i }}">{{ i }}</a></li>
+              {% endif %}
+      
+            {% endfor %}
+      
+            {% if products.has_next %}
+              <li class="page-item pag">
+                <a class="page-link pag" href="?page={{ products.next_page_number }}" aria-label="Next">
+                  <span class="pag" aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            {% else %}
+              <li class="page-item pag">
+                <a class="page-link pag disabled" href="#" aria-label="Next">
+                  <span class="pag" aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            {% endif %}
+          </ul>
+      {% endif %}
+    </div>
+  </div>
+</div>
+  <br>
+  
+{% endblock %}

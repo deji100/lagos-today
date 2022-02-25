@@ -1,0 +1,128 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+
+{% block store %}
+<div class="contact" style="margin: auto;">
+    <br>
+    <br>
+    <br>
+    {% for message in messages %}
+        <div class="container-fluid p-0">
+            <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert" >
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="banner"></div>
+
+    <div class="background">
+
+        <div class="container">
+            <div class="row">
+                <h3 style="text-align: center;"><i>Get in touch with us !</i></h3>
+                <br>
+                <br>
+                <div class="col-md-4 flex r">
+                    <img style="width: 2rem;" src="{% static 'images/mobile.svg' %}" alt="">
+                    <div class="mt-2">Phone</div>
+                    <div style="width: 70%;">
+                        <p style="text-align: center;">
+                            +2349012345678
+                        </p>
+                        <p style="text-align: center;">
+                            +2349012345678
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 flex">
+                    <img style="width: 2rem;" src="{% static 'images/location.svg' %}" alt="">  
+                    <div class="mt-2">Address</div>
+                    <div style="width: 70%;">
+                        <p style="width: 100%; text-align: center;">
+                            44, Itolo Street, Off Eric Moore Road, Surulere, Lagos.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 flex l">
+                    <img style="width: 2rem;" src="{% static 'images/envelop.svg' %}" alt="">
+                    <div class="mt-2">Email</div>
+                    <div style="width: 70%;">
+                        <p style="width: 100%; text-align: center;">
+                                adeyemideji9@gmail.com
+                        </p>
+                        <p style="width: 100%; text-align: center;">
+                                adedeji6645@gmail.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="row">
+                <h6 style="text-align: center;">IF YOU GOT ANY QUESTIONS</h6>
+                <h6 style="text-align: center;">PLEASE DO NOT HESITATE TO SEND US A MESSAGE.</h6>
+                <br>
+                <div class="col-md-12 d-flex justify-content-center">
+                    <div style="width: 60%;">
+                        <form action="{% url 'contact' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="text" name="name" value="{{ customer.account.username }}" class="form-control mt-3" placeholder="Your name">
+                            <input type="text" name="email" value="{{ customer.account.email }}" class="form-control mt-3" placeholder="Your Email">
+                            <input type="text" name="subject" class="form-control mt-3" placeholder="Subject">
+                            <textarea name="message" id="" cols="30" rows="5" class="form-control mt-3" placeholder="Message"></textarea>
+                            <input onclick="submit()" type="submit" class="btn btn-dark form-control mt-3 submit-question">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="row d-flex justify-content-center" style="width: 60%; margin: auto;">
+                <h3 style="text-align: center;" class="mt-2"><i>Connect with us !</i></h3>
+                <br>
+                <div class="col-3 mt-3 d-flex justify-content-center">
+                    <a href=""><img title="Facebook" style="width: 2rem;"  src="{% static 'images/face.svg' %}" alt=""></a>
+                </div>
+                <div class="col-3 mt-3 d-flex justify-content-center">
+                    <a href=""><img title="Instagram" style="width: 2rem;"  src="{% static 'images/insta.svg' %}" alt=""></a>
+                </div>
+                <div class="col-3 mt-3 d-flex justify-content-center">
+                    <a href=""><img title="LinkedIn" style="width: 2rem;"  src="{% static 'images/linked.svg' %}" alt=""></a>
+                </div>
+                <div class="col-3 mt-3 d-flex justify-content-center">
+                    <a href=""><img title="Twitter" style="width: 2rem;"  src="{% static 'images/twitter.svg' %}" alt=""></a>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="row" style="width: 100%; margin-left: 0;">
+                <h5>44, Itolo Street, Off Eric Moore Road, Surulere Lagos. <span><a target="_blank" style="text-decoration: none;" href="https://bit.ly/3yDKZbU">click here for direction</a></span></h5>
+                <div class="col-md-12">
+                    <div id="map"></div>
+                        <script>
+                            function initMap() {
+                            var location = {lat: 6.486256418875243, lng: 3.351080281606772};
+                            var map = new google.maps.Map(document.getElementById("map"), {
+                                zoom: 15, 
+                                center: location
+                            });
+                            var marker = new google.maps.Marker({
+                                position: location,
+                                map: map
+                            });
+                        }
+                        </script>
+                        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkr8xhk7uORdU9EvpNW0WKhZ_khnGTJ8c&callback=initMap"></script>
+                </div>
+            </div>
+        </div>
+        <div class="whatsapp">
+            <a href="https://wa.me/2349011735491" title="Whatsapp" target="_blank"><img src="{% static 'images/wats.jpg' %}" alt="Whatsapp"></a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

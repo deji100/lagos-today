@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block store %}
+<br>
+
+{% for message in messages %}
+    <div class="container-fluid p-0">
+      <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert" >
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    </div>
+{% endfor %}
+<br>
+<br>
+{% for product in saved_products %}
+  <div class="saved">
+    <div class="saved-item-details">
+      <div class="container rounded bg-gradient">
+        <div class="row">
+          <div class="col-md-4 border-right saved-row">
+
+            <div class="saved-img">
+                <div><a href="{% url 'product' product.product.id %}"><img src="{{ product.product.imageUrl }}" alt=""></a></div>
+            </div>
+          </div>
+
+          <div class="col-md-4 border-right saved-row saved-d">
+              <div>Title:  {{ product.product.title }}</div>
+              <div>Price:  ₦{{ product.product.price }}</div>
+          </div>
+
+          <div class="col-md-4 border-right saved-row">
+            <button style="position: relative; right:3rem;" type="button" data-product="{{ product.product.id }}" data-action="add" class="btn btn-success save update-cart">Buy now</button>
+            <button style="position: relative; right: 3rem;" type="button" class="btn btn-danger add"><a class="cart_button" href="{% url 'delete_product' product.id %}">Remove</a></button>
+          </div>            
+        </div>
+    </div>
+  </div>
+{% empty %}
+  <div class="resetview" style="text-align: center;">No saved product yet.</div>
+{% endfor %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% endblock %}

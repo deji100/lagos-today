@@ -1,0 +1,7 @@
+venv
+core/.env
+core/__pycache__
+store/__pycache__
+.vscode
+store/migrations/__pycache__
+

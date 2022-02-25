@@ -1,0 +1,105 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block store %}
+<br>
+<br>
+<br>
+<div class="row">
+  {% for message in messages %}
+        <div class="container-fluid p-0">
+          <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert" >
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        </div>
+    {% endfor %}
+    <div class="col-lg-6">
+          <div class="box-element" id="form-wrapper">
+            <form action="{% url 'shipping' %}" id="form" method="POST">
+              {% csrf_token %}
+                <div id="user-info">
+                    <div class="form-field">
+                        <input required class="form-control" type="text" name="username" value="{{ cart.customer.account }}" placeholder="Name..">
+                    </div>
+                    <div class="form-field">
+                        <input required class="form-control" type="email" name="email" value="{{ cart.customer.account.email }}" placeholder="Email..">
+                    </div>
+                </div>
+
+                <div id="shipping-info">
+                    <hr>
+                  <p>Shipping Information:</p>
+                  <hr>
+                  <div class="form-field">
+                    <input class="form-control" type="text" name="address" value="{{ cart.customer.address }}" placeholder="Address..">
+                  </div>
+                  <div class="form-field">
+                    <input class="form-control" type="text" name="city" value="{{ cart.customer.city }}" placeholder="City..">
+                  </div>
+                  <div class="form-field">
+                    <input class="form-control" type="text" name="state" value="{{ cart.customer.state }}" placeholder="State..">
+                  </div>
+                </div>
+                <hr>
+                <input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue">
+            </form>
+        </div>
+
+        <br>
+
+        <div class="box-element hidden" id="payment-info">
+            <small>Make Payment</small>
+            <h4>Total: ₦{{ cart.get_cart_total }}</h4>
+            <form action="{% url 'payment' %}" method="POST">
+              {% csrf_token %}
+              <input type="number" name="amount" class="form-control w-25" placeholder="Amount" value="{{ cart.get_cart_total }}" hidden>
+              <input class="btn btn-success mt-1" type="submit" value="Pay">
+            </form>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="box-element">
+            <a class="btn btn-outline-dark" href="{% url 'cart' %}">&#x2190;Back to Cart</a>
+            <hr>
+            <h3>Order Summary</h3>
+            <hr>
+            {% for product in customer_order_products %}
+            <div class="cart-row">
+                <div style="flex:1"><img src="{{ product.product.imageUrl }}" class="row-image"></div>
+                <div style="flex:1.5; margin-top: 2rem;"><p>{{ product.product }}</p></div>
+                <div style="flex:1; margin-top: 2rem;"><p>₦{{ product.product.price }}</p></div>
+                <div style="flex:.5; margin-top: 2rem;"><p><span>X</span> {{ product.quantity }}</p></div>
+            </div>
+            {% endfor %}
+            <h5>Items: {{ cart.get_cart_items_total }}</h5>
+            <h5>Total: ₦{{ cart.get_cart_total }}</h5>
+            <hr>
+            <div>
+              <h4>Shipping Information</h4>
+              <br>
+              {% if not shipping %}
+              <div>
+                <h6>Address: </h6><p>{{ shipping.address }}</p>
+                <h6>City: </h6><p>{{ shipping.city }}</p>
+                <h6>State: </h6><p>{{ shipping.state }}</p>
+                <h6>Delivery Date: </h6><p></p>
+                <br>
+              </div>
+              {% else %}
+              <div>
+                <h6>Address: </h6><p>{{ shipping.address }}</p>
+                <h6>City: </h6><p>{{ shipping.city }}</p>
+                <h6>State: </h6><p>{{ shipping.state }}</p>
+                <h6>Delivery Date: {{ shipping.delivery_date.date }}</h6><p></p>
+                <br>
+              </div>
+              {% endif %}
+            </div>
+        </div>     
+    </div>
+</div>
+<br>
+<br>
+{% endblock %}

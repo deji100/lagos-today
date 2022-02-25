@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'debug_toolbar',
-    'fontawesomefree',
+    # 'fontawesomefree',
     'crispy_forms',
     'django.contrib.sites',
     'store',
@@ -251,14 +251,20 @@ PAYSTACK_PUBLIC_KEY = os.getenv('PAYSTACK_PUBLIC_KEY')
 
 # AWS Configuration
 
-AWS_ACCESS_KEY_ID = 'AKIAWX2LLPCFEB3NWWLS'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'lagos-today-bucket'
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
-}
+AWS_QUERYSTRING_AUTH = os.getenv('AWS_QUERYSTRING_AUTH')
+DEFAULT_FILE_STORAGE = os.getenv('DEFAULT_FILE_STORAGE')
 
-AWS_LOCATION = 'static'
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
 
+AWS_S3_FILE_OVERWRITE = os.getenv('AWS_S3_FILE_OVERWRITE')
+AWS_DEFAULT_ACL = os.getenv('AWS_DEFAULT_ACL')
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+# AWS_S3_OBJECT_PARAMETERS = {
+#     'CacheControl': 'max-age=86400',
+# }
+
+# AWS_LOCATION = 'static'

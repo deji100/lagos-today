@@ -29,7 +29,9 @@ SECRET_KEY = 'ov91*_gwlqla!dxhg@7ltfc9ql3bu0)oh!xop9slwt%gsx^6!*'
 # DEBUG = True
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://lagos-today.herokuapp.com/']
+ALLOWED_HOSTS = [
+    'lagos-today.herokuapp.com'
+    ]
 
 INTERNAL_IPS = [
     '127.0.0.1',

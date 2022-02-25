@@ -23,14 +23,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ov91*_gwlqla!dxhg@7ltfc9ql3bu0)oh!xop9slwt%gsx^6!*'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'lagos-today.herokuapp.com'
+    'lagos-today.herokuapp.com',
+    '127.0.0.1:8000',
+    '127.0.0.1'
     ]
 
 INTERNAL_IPS = [
@@ -51,6 +53,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django.contrib.sites',
     'store',
+    'storages',
  
     # allauth
     'allauth',
@@ -245,3 +248,17 @@ DEFAULT_AUTO_FIELD = os.getenv('DEFAULT_AUTO_FIELD')
 PAYSTACK_SECRET_KEY = os.getenv('PAYSTACK_SECRET_KEY')
 
 PAYSTACK_PUBLIC_KEY = os.getenv('PAYSTACK_PUBLIC_KEY')
+
+# AWS Configuration
+
+AWS_ACCESS_KEY_ID = 'AKIAWX2LLPCFEB3NWWLS'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'lagos-today-bucket'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+
+AWS_LOCATION = 'static'
+
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

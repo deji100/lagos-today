@@ -16,7 +16,5 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
 
 application = get_wsgi_application()
 
-
-application = MyWSGIApp()
 application = WhiteNoise(application, root=settings.STATIC_ROOT)
 # application.add_files(settings.MEDIA_ROOT, prefix="more-files/")

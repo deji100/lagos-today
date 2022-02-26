@@ -28,8 +28,8 @@ load_dotenv()
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = False
+DEBUG = True
+# DEBUG = False
 
 ALLOWED_HOSTS = [
     'lagos-today.herokuapp.com',
@@ -233,6 +233,8 @@ MEDIA_URL = '/images/'
 
 MEDIA_ROOT = BASE_DIR / 'store/static/images'
 
+load_dotenv()
+
 EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
 EMAIL_HOST = os.getenv('EMAIL_HOST')
 EMAIL_PORT = os.getenv('EMAIL_PORT')
@@ -251,20 +253,32 @@ PAYSTACK_PUBLIC_KEY = os.getenv('PAYSTACK_PUBLIC_KEY')
 
 # AWS Configuration
 
-AWS_QUERYSTRING_AUTH = os.getenv('AWS_QUERYSTRING_AUTH')
-DEFAULT_FILE_STORAGE = os.getenv('DEFAULT_FILE_STORAGE')
+# AWS_QUERYSTRING_AUTH = os.getenv('AWS_QUERYSTRING_AUTH')
+# DEFAULT_FILE_STORAGE = os.getenv('DEFAULT_FILE_STORAGE')
 
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+# AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+# AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+# AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
 
-AWS_S3_FILE_OVERWRITE = os.getenv('AWS_S3_FILE_OVERWRITE')
-AWS_DEFAULT_ACL = os.getenv('AWS_DEFAULT_ACL')
+# AWS_S3_FILE_OVERWRITE = os.getenv('AWS_S3_FILE_OVERWRITE')
+# AWS_DEFAULT_ACL = os.getenv('AWS_DEFAULT_ACL')
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+# AWS_S3_OBJECT_PARAMETERS = {
+#     'CacheControl': 'max-age=86400',
+# }
+
+AWS_QUERYSTRING_AUTH = False
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_ACCESS_KEY_ID = 'AKIAWX2LLPCFEB3NWWLS'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'lagos-today-bucket'
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+AWS_LOCATION = 'static'
+
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
-}
-
-AWS_LOCATION = 'static'

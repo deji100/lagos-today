@@ -31,13 +31,13 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # DEBUG = True
 DEBUG = False
 
-# ALLOWED_HOSTS = [
-#     'lagos-today.herokuapp.com',
-#     '127.0.0.1:8000',
-#     '127.0.0.1'
-#     ]
+ALLOWED_HOSTS = [
+    'lagos-today.herokuapp.com',
+    '127.0.0.1:8000',
+    '127.0.0.1'
+    ]
 
-ALLOWED_HOSTS = [ '*' ]
+# ALLOWED_HOSTS = [ '*' ]
 
 INTERNAL_IPS = [
     '127.0.0.1',
@@ -70,6 +70,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -235,6 +236,7 @@ MEDIA_URL = '/images/'
 
 MEDIA_ROOT = BASE_DIR / 'store/static/images'
 
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
 EMAIL_HOST = os.getenv('EMAIL_HOST')

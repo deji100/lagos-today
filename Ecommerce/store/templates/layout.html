@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Benne&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    {% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> {% endcomment %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/media_query.css' %}">
     <title>Lagos Today</title>
@@ -56,7 +56,6 @@
         </div>
         {% endif %}
         <div id="nav-links">
-        
           <div class="dropdown nav-link">
             {% if request.user.is_authenticated %}
                 {% if request.user.customer.imageUrl %}
@@ -71,12 +70,22 @@
             {% endif %}
             {% if request.user.is_authenticated %}
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <li><a style="color: black;" href="{% url 'profile' %}"><button class="dropdown-item" type="button">Profile</button></a></li>
-                <li><a style="color: black;" href="{% url 'order' %}"><button class="dropdown-item" type="button">Orders</button></a></li>
-                <li><a style="color: black;" href="{% url 'saved_product' %}"><button class="dropdown-item" type="button">Saved Product</button></li>
-                <li><a style="color: black;" href="{% url 'password' %}"><button class="dropdown-item" type="button">Change Password</button></li>
-                <li><a style="color: black;" href="{% url 'contact' %}"><button class="dropdown-item" type="button">Contact Us</button></a></li>
-                <li><a style="color: black;" href="{% url 'logout' %}"><button class="dropdown-item" type="button">Logout</button></a></li>
+                <li>
+                  <div class="searching">
+                    <form action="{% url 'search' %}" method="POST">
+                      {% csrf_token %}
+                      <input class="input-search" style="display: inline; border-radius: 20px; border: none;" type="text" name="search" placeholder="Search">
+                      <!-- <input type="submit" class="btn btn-dark" value="Search" style="visibility: hidden;"> -->
+                    </form>
+                  </div>
+                  <hr>
+                </li>
+                <li><a href="{% url 'profile' %}"><button class="dropdown-item" type="button">Profile</button></a></li>
+                <li><a href="{% url 'order' %}"><button class="dropdown-item" type="button">Orders</button></a></li>
+                <li><a href="{% url 'saved_product' %}"><button class="dropdown-item" type="button">Saved Product</button></li>
+                <li><a href="{% url 'password' %}"><button class="dropdown-item" type="button">Change Password</button></li>
+                <li><a href="{% url 'contact' %}"><button class="dropdown-item" type="button">Contact Us</button></a></li>
+                <li><a href="{% url 'logout' %}"><button class="dropdown-item" type="button">Logout</button></a></li>
               </ul>
           </div>
           

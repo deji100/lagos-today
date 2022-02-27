@@ -52,7 +52,6 @@ nav span a:hover {
     left: 45rem;
     right: 5rem;
     margin-right: 2rem;
-    /* border: 1px solid orange; */
 }
 
 #nav-links a {
@@ -60,6 +59,14 @@ nav span a:hover {
     text-decoration: none;
     font-size: 1.4vw;
 
+}
+
+.searching {
+    display: none;
+}
+
+hr {
+    display: none;
 }
 
 .search {
@@ -160,7 +167,8 @@ nav span a:hover {
     border: 10px solid white;
     width: 100%;
     height: auto;
-    margin-bottom: 8rem;
+    margin: auto;
+    margin-bottom: 3rem;
     padding: 2rem;
 }
 
@@ -189,6 +197,10 @@ nav span a:hover {
     align-items: center;
     margin: auto;
     margin-bottom: 2rem;
+}
+
+.containee .row {
+    margin: auto;
 }
 
 .layout {
@@ -597,17 +609,17 @@ h1,h2,h3,h4,h5,h6 {
 .google {
     border-radius: 50px;
     outline: none;
-    color: white;
+    color: red;
 }
 
 .facebook {
     border-radius: 50px;
-    color: white;
+    color: blue;
     outline: none;
 }
 
 .resetview {
-    width: 40%;
+    max-width: 70%;
     margin: auto;
     padding: 1.2rem;
     border-radius: 10px;
@@ -618,8 +630,6 @@ h1,h2,h3,h4,h5,h6 {
     width: 25%;
 }
 
-
-
 .input-search {
     outline: none;
     width: 12rem;
@@ -629,7 +639,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .search_result {
-    max-width: 30%;
+    max-width: 50%;
     height: auto;
     margin: auto;
     padding: 1rem;
@@ -639,7 +649,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .result {
-    width: 70%;
+    max-width: 100%;
     margin: auto;
     text-align: left;
 }
@@ -647,7 +657,7 @@ h1,h2,h3,h4,h5,h6 {
 .password-update {
     position: relative;
     top: 5rem;
-    width: 30%;
+    max-width: 70%;
     margin: auto;
     padding: 2rem;
     border-radius: 10px;

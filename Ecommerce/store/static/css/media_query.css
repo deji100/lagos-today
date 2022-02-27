@@ -7,6 +7,17 @@
         left: 43.5rem;
     }
 
+    #pro-nav {
+        top: 4rem;
+        margin-top: -6rem;
+        padding: .7rem;
+        font-size: 1.5vw;
+    }
+
+    .dots {
+        position: absolute;
+        bottom: -.1rem;
+    }
 }
 
 @media screen and (max-width:1310px) {
@@ -16,6 +27,7 @@
     .search {
         left: 41.5rem;
     }
+
 }
 
 @media screen and (max-width:1270px) {
@@ -25,10 +37,6 @@
     .search {
         left: 39.5rem;
     }
-    .protect-content {
-        margin-bottom: 9rem;
-    }
-    
 }
 
 @media screen and (max-width:1230px) {
@@ -50,7 +58,6 @@
     .search {
         left: 35.5rem;
     }
-
 }
 
 @media screen and (max-width:1150px) {
@@ -79,24 +86,28 @@
     .size2 img {
         height: 100%;
     }
-    .protect-content {
-        margin-bottom: 5rem;
-    }
+
     .prev, .next {
         bottom: 13rem;
     }
 
+    .protect-content {
+        width: 100%;
+        height: auto;
+        padding: 1.5rem;
+    }
+
     #pro-nav {
-        top: 29rem;
+        top: 4rem;
+        margin-top: -11.5rem;
+        padding: .7rem;
+        font-size: 1.5vw;
     }
 
-    .contain {
-        top: 29rem;
+    .dots {
+        position: absolute;
+        bottom: 6rem;
     }
-    .paginate {
-        top: 30rem;
-    }
-
 }
 
 @media screen and (max-width:1070px) {
@@ -106,8 +117,14 @@
 
     .search {
         left: 29.5rem;
-    }
+    } */
 
+    /* .dots {
+        position: absolute;
+        bottom: 20rem;
+        visibility: hidden;
+    } */
+    
 }
 
 @media screen and (max-width:1030px) {
@@ -118,11 +135,6 @@
     .search {
         left: 27.5rem;
     }
-
-    .card {
-        width: 16rem;
-    }
-
 }
 
 @media screen and (max-width:990px) {
@@ -144,6 +156,16 @@
     .search {
         left: 23.5rem;
     }
+
+    .dots {
+        visibility: hidden;
+    }
+
+    .dropdown-item {
+        font-size: 1.3em;
+    }
+
+    
 }
 
 @media screen and (max-width:910px) {
@@ -156,9 +178,7 @@
         visibility: visible;
     }
 
-    .card {
-        width: 14rem;
-    }
+    
 }
 
 @media screen and (max-width:870px) {
@@ -170,6 +190,7 @@
         left: 19.5rem;
         visibility: visible;
     }
+
 }
 
 @media screen and (max-width:830px) {
@@ -181,26 +202,23 @@
         left: 17.5rem;
         visibility: visible;
     }
+
 }
 
 @media screen and (max-width:790px) {
     #nav-links {
-        left: 14rem;
+        left: 12rem;
     }
 
     .search {
         left: 15.5rem;
         visibility: visible;
     }
-
-    .card {
-        width: 13rem;
-    }
 }
 
 @media screen and (max-width:750px) {
     #nav-links {
-        left: 12rem;
+        left: 10rem;
     }
 
     .search {
@@ -218,32 +236,22 @@
         bottom: 16rem;
     }
 
-    .card {
-        margin: auto;
-        width: 17rem;
-    }
-
     #pro-nav {
-        top: 25rem;
-    }
-
-    .contain {
-        top: 25rem;
-    }
-    .paginate {
-        top: 26rem;
+        top: 4rem;
+        margin-top: -15.5rem;
+        padding: .7rem;
+        font-size: 1.5vw;
     }
 }
 
 @media screen and (max-width:710px) {
     #nav-links {
-        left: 10rem;
+        left: 8rem;
     }
 
     .search {
         left: 11.5rem;
         visibility: visible;
-
     }
 
     .prev, .next {
@@ -253,23 +261,28 @@
 
 @media screen and (max-width:690px) {
     #nav-links {
-        left: 9rem;
+        left: 7rem;
     }
 
     .search {
         left: 9.5rem;
         visibility: visible;
-
     }
 
     .prev, .next {
         bottom: 20rem;
     }
+
+    .containee .row .col{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 @media screen and (max-width:670px) {
     #nav-links {
-        left: 8rem;
+        left: 6rem;
     }
 
     .search {
@@ -287,20 +300,26 @@
     }
 
     #pro-nav {
-        top: 21.3rem;
+        top: 4rem;
+        margin-top: -19.5rem;
+        padding: .7rem;
+        font-size: 1.5vw;
     }
 
-    .contain {
-        top: 21.3rem;
+    .dropdown-menu {
+        width: 10rem;
     }
-    .paginate {
-        top: 22rem;
+
+    .containee .row .col{
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 
 @media screen and (max-width:640px) {
     #nav-links {
-        left: 6rem;
+        left: 4rem;
     }
 
     .search {
@@ -311,19 +330,11 @@
     .prev, .next {
         bottom: 23rem;
     }
-    .card {
-        width: 13rem;
-    }
 }
 
 @media screen and (max-width:599px) {
     #nav-links {
-        left: 4rem;
-    }
-
-    .product-flex {
-        padding: .8rem;
-        width: 98%;
+        left: 12rem;
     }
 
     .search {
@@ -334,46 +345,70 @@
     .size2 {
         height: 40%;
     }
+
     .size2 img {
         height: 100%;
     }
+
     .prev, .next {
         bottom: 26rem;
     }
+
     #pro-nav {
-        top: 17.5rem;
+        top: 4rem;
+        margin-top: -23.5rem;
+        padding: .7rem;
+        font-size: 1.5vw;
     }
 
-    .contain {
-        top: 17.5rem;
+    .search {
+        display: none;
     }
-    .card {
-        width: 13rem;
+
+    .dropdown-menu {
+        background-color: rgb(62, 94, 107);
+        width: 12rem;
+        color: white;
     }
-    .paginate {
-        top: 18rem;
+
+    .dropdown-item {
+        color: white;
+        font-size: 1.7em;
+    }
+
+    .searching {
+        display: block;
+        position: relative;
+    }
+
+    hr {
+        display: block;
+        border: 2px solid white;
+    }
+
+    .input-search {
+
+        outline: none;
+        width: 12rem;
+        margin: auto;
+        padding: .4rem;
     }
 }
 
  @media screen and (max-width:582px) {
     #nav-links {
-        left: 3rem;
+        left: 10rem;
     }
 
     .search {
         left: 3.5rem;
         visibility: visible;
     }
-
-    .cart-row div strong {
-        font-size: 1rem;
-    }
-    
 }
 
 @media screen and (max-width:550px) {
     #nav-links {
-        left: 1rem;
+        left: 8rem;
     }
 
     .search {
@@ -385,7 +420,7 @@
 
 @media screen and (max-width:520px) {
     #nav-links {
-        left: 0rem;
+        left: 6rem;
     }
 
     .search {
@@ -397,21 +432,18 @@
 
 @media screen and (max-width:505px) {
     #nav-links {
-        left: -1rem;
+        left: 6rem;
     }
 
     .search {
         left: 3rem;
         visibility: visible;
     }
-    .card {
-        width: 12rem;
-    }
 }
 
 @media screen and (max-width:485px) {
     #nav-links {
-        left: -0rem;
+        left: 6rem;
     }
 
     .search {
@@ -426,7 +458,7 @@
 
 @media screen and (max-width:470px) {
     #nav-links {
-        left: 0rem;
+        left: 6rem;
     }
 
     .search {
@@ -441,14 +473,11 @@
     .next, .prev {
         bottom: 21rem;
     }
-    .card {
-        width: 16rem;
-    }
 }
 
 @media screen and (max-width:440px) {
     #nav-links {
-        left: -1rem;
+        left: 6rem;
     }
 
     .search {
@@ -459,7 +488,7 @@
 
 @media screen and (max-width:420px) {
     #nav-links {
-        left: -2rem;
+        left: 6rem;
     }
 
     .search {
@@ -470,7 +499,7 @@
 
 @media screen and (max-width:404px) {
     #nav-links {
-        left: -1rem;
+        left: 6rem;
     }
 
     .search {
@@ -480,15 +509,11 @@
     .input-search {
         width: 8rem;
     }
-
-    /* .next, .prev {
-        bottom: 12rem;
-    } */
 }
 
 @media screen and (max-width:385px) {
     #nav-links {
-        left: -1rem;
+        left: 6rem;
     }
 
     .search {
@@ -506,7 +531,7 @@
 
 @media screen and (max-width:370px) {
     #nav-links {
-        left: -2rem;
+        left: 4rem;
     }
 
     .search {
@@ -524,7 +549,7 @@
 
 @media screen and (max-width:351px) {
     #nav-links {
-        left: -1rem;
+        left: 3rem;
     }
 
     .search {
@@ -546,7 +571,7 @@
 
 @media screen and (max-width:330px) {
     #nav-links {
-        left: -1rem;
+        left: 3rem;
     }
 
     .search {

@@ -28,8 +28,8 @@ load_dotenv()
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = False
+# DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'lagos-today.herokuapp.com',
@@ -39,9 +39,9 @@ ALLOWED_HOSTS = [
 
 # ALLOWED_HOSTS = [ '*' ]
 
-INTERNAL_IPS = [
-    '127.0.0.1',
-]
+# INTERNAL_IPS = [;
+#     '127.0.0.1',
+# ]
 
 # Application definition
 
@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'debug_toolbar',
+    # 'debug_toolbar',
     # 'fontawesomefree',
     'crispy_forms',
     'django.contrib.sites',

@@ -32,7 +32,7 @@ DEBUG = True
 # DEBUG = False
 
 ALLOWED_HOSTS = [
-    'lagos-today.herokuapp.com/store',
+    'https://lagos-today.herokuapp.com/store',
     '127.0.0.1:8000',
     '127.0.0.1'
     ]

@@ -14,16 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf import settings
-# import debug_toolbar
+import debug_toolbar
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('store/', include('store.urls')),
+    path('', include('store.urls')),
     path('accounts/', include('allauth.urls')),
-    # path('__debug__/', include(debug_toolbar.urls)),
+    path('__debug__/', include(debug_toolbar.urls)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # path('create-checkout-session/', CreateCheckoutSessionView.as_view(), name='create-checkout-session')

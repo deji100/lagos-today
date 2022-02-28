@@ -640,8 +640,10 @@ h1,h2,h3,h4,h5,h6 {
 
 
 .form-container {
-    max-width: 30%;
+    min-width: 40%;
     margin: auto;
+    position: relative;
+    top: 7rem;
     border: 1px solid lightblue;
     padding: 2.5rem;
     border-radius: 10px;
@@ -664,10 +666,12 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .form-cont {
-    max-width: 60%;
+    min-width: 40%;
     padding: 1rem;
     border-radius: 10px;
     margin: auto;
+    position: relative;
+    top: 7rem;
     background-color: rgba(255, 255, 255, 0.842);
 }
 

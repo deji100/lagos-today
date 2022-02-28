@@ -170,7 +170,7 @@ SOCIALACCOUNT_PROVIDERS = {
 
 SITE_ID = 1
 
-LOGIN_REDIRECT_URL = 'store'
+LOGIN_REDIRECT_URL = 'https://lagos-today.herokuapp.com/'
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 

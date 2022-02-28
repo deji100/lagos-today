@@ -6,12 +6,8 @@
 
 {% block store %}
 
-<br>
-<br>
-<br>
-<br>
+
 <div class="form-cont">
-    <br>
     <div class="container rounded">
         <div class="row">
             <div class="col-md-6 login-form">
@@ -26,8 +22,8 @@
         
                     <br>
                     <button type="submit" class="btn btn-primary">Submit</button>
-                    <a href="{% url 'reset_password' %}" class="forgot-password"><span>forgot password?</span></a>
                     <br>
+                    <a href="{% url 'reset_password' %}" class="forgot-password"><div>forgot password?</div></a>
                     <br>
                     <div>Don't have an account? <a style="text-decoration: none;" href="{% url 'register' %}">Register</a></div>
                 </form>

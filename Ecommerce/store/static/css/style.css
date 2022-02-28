@@ -210,7 +210,9 @@ hr {
 }
 
 .layout {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: 'Benne', serif;
     font-size: 20px;
     min-height: 100vh;
@@ -640,12 +642,16 @@ h1,h2,h3,h4,h5,h6 {
 
 
 .form-container {
-    max-width: 30%;
+    min-width: 40%;
     margin: auto;
     border: 1px solid lightblue;
-    padding: 2.5rem;
+    margin-top: 7rem;
+    padding: 2rem;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.842);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -664,11 +670,16 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .form-cont {
-    width: 60%;
-    padding: 1rem;
-    border-radius: 10px;
+    min-width: 40%;
     margin: auto;
+    margin-top: 5rem;
+    border: 1px solid lightblue;
+    padding: 2rem;
+    border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.842);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .login-form {

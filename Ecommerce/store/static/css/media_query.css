@@ -454,11 +454,11 @@
     }
 
     .prev, .next {
-        bottom: 2rem;
+        bottom: 6rem;
     }
-    
+
     .toggle {
-        margin-top: -26rem;
+        margin-top: -28rem;
     }
 }
 

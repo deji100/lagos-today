@@ -12,7 +12,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 from django.contrib.messages import constants as messages
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
+# import environ
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,10 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-load_dotenv()
+# env = environ.Env()
+# environ.Env.read_env()
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = os.getenv('SECRET_KEY')
+# SECRET_KEY = env('SECRET_KEY')
+# print(SECRET_KEY)
 SECRET_KEY = 'ov91*_gwlqla!dxhg@7ltfc9ql3bu0)oh!xop9slwt%gsx^6!*'
 
 
@@ -59,6 +62,7 @@ INSTALLED_APPS = [
     'fontawesomefree',
     'crispy_forms',
     'django.contrib.sites',
+    'dotenv',
     'store',
     'storages',
  
@@ -241,22 +245,31 @@ MEDIA_ROOT = BASE_DIR / 'store/static/images'
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-load_dotenv()
+# load_dotenv()
 
-EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
-EMAIL_HOST = os.getenv('EMAIL_HOST')
-EMAIL_PORT = os.getenv('EMAIL_PORT')
-EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+# EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
+# EMAIL_HOST = os.getenv('EMAIL_HOST')
+# EMAIL_PORT = os.getenv('EMAIL_PORT')
+# EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
+# EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'adeyemideji9@gmail.com'
+EMAIL_HOST_PASSWORD = 'lswubjqfeakfrtqe'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = os.getenv('DEFAULT_AUTO_FIELD')
+# DEFAULT_AUTO_FIELD = os.getenv('DEFAULT_AUTO_FIELD')
+# PAYSTACK_SECRET_KEY = os.getenv('PAYSTACK_SECRET_KEY')
+# PAYSTACK_PUBLIC_KEY = os.getenv('PAYSTACK_PUBLIC_KEY')
 
-PAYSTACK_SECRET_KEY = os.getenv('PAYSTACK_SECRET_KEY')
-
-PAYSTACK_PUBLIC_KEY = os.getenv('PAYSTACK_PUBLIC_KEY')
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+PAYSTACK_SECRET_KEY = 'sk_test_5db1ae226fc20fd35edad57294a6c7b0b323e1f1'
+PAYSTACK_PUBLIC_KEY = 'pk_test_168c0440d3a0faf09901923a28b6803851bd71bb'
 
 

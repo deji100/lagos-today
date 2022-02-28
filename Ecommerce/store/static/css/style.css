@@ -640,7 +640,8 @@ h1,h2,h3,h4,h5,h6 {
 
 
 .form-container {
-    max-width: 50%;
+    max-width: 70%;
+    min-width: 50%;
     margin: auto;
     position: relative;
     top: 7rem;
@@ -666,7 +667,8 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .form-cont {
-    max-width: 50%;
+    max-width: 70%;
+    min-width: 50%;
     padding: 1rem;
     border-radius: 10px;
     margin: auto;

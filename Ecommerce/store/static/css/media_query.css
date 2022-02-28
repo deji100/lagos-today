@@ -629,4 +629,14 @@
     .input-search {
         width: 7rem;
     }
+
+    .prev, .next {
+        bottom: 2rem;
+    }
+}
+
+@media screen and (max-width:320px) {
+    .toggle {
+        margin-top: -26rem;
+    }
 }

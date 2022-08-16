@@ -14,6 +14,9 @@
 - Oversaw and assisted with software testing and validation procedures and programming. 
 - Gathered and evaluated user feedback in order to improve software for better usability. 
 
+## Link to web app
+https://lagos-today.herokuapp.com/login/
+
 ## Sample Pictures
 
 ![Screenshot 2022-03-02 172430](https://user-images.githubusercontent.com/68882568/184948712-8c3213bf-403c-496d-bbd1-6cb8a6eff8cc.png)

@@ -13,3 +13,8 @@
 - Modified existing software to correct errors or improve overall performance. 
 - Oversaw and assisted with software testing and validation procedures and programming. 
 - Gathered and evaluated user feedback in order to improve software for better usability. 
+
+
+##Sample Videos
+
+https://user-images.githubusercontent.com/68882568/184944251-20ff7e70-1439-41ec-ba95-f401471e3fa6.mp4

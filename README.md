@@ -8,10 +8,9 @@
 - Integrated with Paystack payment system for user to make payment while purchasing a product. 
 - SQL was the choice for this app because of its simplicity. 
 - Contains a cart page where a user's order is prepared before checking out. 
-- hosted on Heroku but on a free hosting plan.
+- Hosted on Heroku but on a free hosting plan.
 - Analysed our user needs and design software. 
-- Modified existing software to correct errors or improve overall performance. 
-- Oversaw and assisted with software testing and validation procedures and programming. 
+- Oversaw software testing and validation procedures and programming. 
 - Gathered and evaluated user feedback in order to improve software for better usability. 
 
 ## Link to web app

@@ -33,12 +33,11 @@ SECRET_KEY = 'ov91*_gwlqla!dxhg@7ltfc9ql3bu0)oh!xop9slwt%gsx^6!*'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = False
+# DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
-    'lagos-today.herokuapp.com',
-    'https://lagos-today.herokuapp.com',
+    "https://lagos-today-ecom.netlify.app/",
     '127.0.0.1:8000',
     '127.0.0.1'
     ]
